@@ -1,0 +1,42 @@
+import logging
+import os
+
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import (
+    Application,
+    CallbackQueryHandler,
+    CommandHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
+
+logging.basicConfig(level=logging.INFO)
+
+# ---------- Configuração (variáveis de ambiente) ----------
+TOKEN = os.environ["BOT_TOKEN"]            # token do @BotFather
+CHANNEL_ID = os.environ["CHANNEL_ID"]      # ex.: @seucanal ou -1001234567890
+ADMIN_ID = int(os.environ["ADMIN_ID"])     # seu ID numérico (pegue com @userinfobot)
+SITE_URL = os.environ.get("SITE_URL", "https://seusite.com")
+SITE_NOME = "raquelzinhaaprivacy"
+
+# ---------- Textos (edite à vontade) ----------
+TEXTO_IDADE = (
+    f"🔞 *{SITE_NOME}*\n\n"
+    "Este conteúdo é exclusivo para maiores de 18 anos.\n"
+    "Você confirma que tem 18 anos ou mais?"
+)
+
+TEXTO_BOAS_VINDAS = (
+    f"💗 Bem-vindo(a) ao *{SITE_NOME}*!\n\n"
+    "Aqui você vê prévias e acessa o conteúdo completo no site.\n"
+    "Escolha uma opção abaixo:"
+)
+
+TEXTO_PLANOS = (
+    "💎 *Assinaturas*\n\n"
+    "• *Básico* – (descreva o que inclui)\n"
+    "• *Completo* – (descreva o que inclui)\n"
+
+python-telegram-bot==21.6
+worker: python bot.py
